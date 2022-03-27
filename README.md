@@ -44,6 +44,42 @@
 
 ---
 
+### [3월 25일]
+
+```
+▶ 사이트 메인 슬라이드 제작
+▶ 슬라이드 디자인 회의
+▶ 개발은 swiper라이브러리 사용 결정
+```
+
+```javascript
+var swiper = new Swiper('.mySwiper', {
+  spaceBetween: 30,
+  centeredSlides: true,
+  loop: true,
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+  },
+  pagination: {
+    el: '.mySwiper > .swiper-pagination',
+    clickable: true,
+  },
+  navigation: {
+    nextEl: '.mySwiper > .swiper-button-next',
+    prevEl: '.mySwiper > .swiper-button-prev',
+  },
+});
+// spaceBetween은 슬라이드 사이의 여백값
+// centeredSlides는 중간 슬라이드가 가운데 오게하는것
+// loop는 반복여부
+// autoplay의 delay는 슬라이드가 반복되는 시간주기이다.
+//pagination은 슬라이드 숫자만큼 불릿을 생성하는것이다.
+//navigation은 해당 스와이퍼 슬라이드의 next,prev버튼을 지정하는것이다.
+```
+
+---
+
 ### [3월 24일]
 
 ```
