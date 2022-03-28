@@ -44,6 +44,54 @@
 
 ---
 
+### [3월 26일]
+
+```
+▶ 나라별 원두 슬라이드 박스 제작
+▶ swiper라이브러리 사용 결정
+▶ hover 효과 추가 (하단에서 올라오는)
+▶ 헤더의 sidebar 클릭시 next,prev버튼 DOM제어
+```
+
+```javascript
+var swiper2 = new Swiper('.beans-slide', {
+  slidesPerView: 3, //한번에 보여줄 슬라이드 개수
+  spaceBetween: -50,
+  pagination: {
+    el: '.beans-slide > .swiper-pagination',
+    clickable: true,
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+});
+// 총 7개의 나라별 원두 박스를 제작했다.
+// 3개만 화면에 노출되고 나머지 슬라이드는 버튼을통해 확인이 가능하다.
+```
+
+```javascript
+var count2 = 9;
+var nxt = document.querySelector('.beans-box > .swiper-container > .swiper-button-next');
+var prev = document.querySelector('.beans-box > .swiper-container > .swiper-button-prev');
+function nxtprev() {
+  count2 += 1;
+  if (count2 % 2 == 0) {
+    nxt.style.display = 'none';
+    prev.style.display = 'none';
+  } else {
+    nxt.style.display = 'block';
+    prev.style.display = 'block';
+  }
+}
+//count2라는 변수에 9라는 임의의값을 지정해준다.
+//querySelector를 통해 원두박스 버튼들을 각각 지정해준다.
+//sidebar가 클릭되면 nxtprev함수가 자동으로 호출된다.
+//함수가 호출되면 count2변수의 값의 홀/짝여부에 따라 display값이 변경된다.
+```
+
+---
+
 ### [3월 25일]
 
 ```
