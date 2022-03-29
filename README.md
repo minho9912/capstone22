@@ -52,6 +52,8 @@
 ▶ background-size: cover를 사용해 스크롤시 이미지도 스크롤되는 효과추가
 ▶ 4가지 효능 박스 opacity값 사용해 투명도 추가
 ▶ 개발은 html과 css로 하기로 결정
+[이미지] (![캡쳐본](https://user-images.githubusercontent.com/80302108/160671833-57df4331-015e-452c-8f56-9d5da129ec9d.PNG)
+)
 ```
 
 ```css
