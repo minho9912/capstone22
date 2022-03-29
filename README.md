@@ -44,6 +44,44 @@
 
 ---
 
+### [3월 27일]
+
+```
+▶ 커피의 효능 이미지 제작 회의
+▶ 인터넷 서칭을 통한 커피의 대표적인 효능 4가지 선정
+▶ background-size: cover를 사용해 스크롤시 이미지도 스크롤되는 효과추가
+▶ 4가지 효능 박스 opacity값 사용해 투명도 추가
+▶ 개발은 html과 css로 하기로 결정
+```
+
+```css
+section.back-img > .coffee-info {
+  width: 100%;
+  height: 400px;
+  background-image: url('../img/커피배경.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 50px 20px 0px 20px;
+  box-sizing: border-box;
+  align-items: center;
+}
+section.back-img > .coffee-info > .info-1 {
+  margin: 0 auto;
+  text-align: center;
+  width: 500px;
+  line-height: 40px;
+  height: 40px;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  background-color: rgba(255, 255, 255, 0.418);
+  border: 4px dashed #fff;
+}
+```
+
+---
+
 ### [3월 26일]
 
 ```
