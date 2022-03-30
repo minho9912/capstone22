@@ -50,11 +50,29 @@
 ▶ 회원가입,로그인,나만의 원두찾기 박스 디자인
 ▶ 버튼 hover시 transition ease 효과
 ▶ 회원가입 상세페이지 제작
+▶ 회원가입 상세페이지는 input태그를 주로 활용
 ▶ 나만의 원두찾기는 mbti테스트와 비슷하게 구현하기로 결정
 
 ```
 
-<a href="https://user-images.githubusercontent.com/80302108/160864330-3e1f1a03-6ec2-46f3-9fec-83164dbe4e65.PNG">이미지</a>
+<a href="https://user-images.githubusercontent.com/80302108/160864330-3e1f1a03-6ec2-46f3-9fec-83164dbe4e65.PNG">박스</a>
+<a href="https://user-images.githubusercontent.com/80302108/160871073-18b25614-aa04-4b2a-8334-fd510b495842.png">회원가입</a>
+
+```html
+<p>회원가입</p>
+<div class="sign-box">
+  <label for="">
+    <span>아이디</span>
+    <br /><input type="text" name="user_id" id="user-id" />
+  </label>
+</div>
+<div class="sign-box">
+  <label for="" id="pass">
+    <span class="user-pwd">비밀번호 </span>
+    <br /><input type="password" name="user_pwd" id="user-pass" />
+  </label>
+</div>
+```
 
 ```css
 .info-box > .info-box-two > .inner > a > .sigin-box {
