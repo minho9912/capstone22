@@ -44,10 +44,66 @@
 
 ---
 
+### [3월 31일]
+
+```
+▶ 로그인 페이지 디자인
+▶ 버튼 hover시 transition ease 효과
+▶ 헤더 sidebar 상세구현
+▶ 헤더 sidebar는 js가아닌 css로만 구현하기로 결정
+▶ 헤더 sidebar는 클릭시 화면 뷰포트를 기준으로 왼쪽에서 나오도록 구현
+
+```
+
+<a href="https://user-images.githubusercontent.com/80302108/161104859-c525542c-9d20-499d-8a96-59cfd64be6b9.PNG">사이드바</a>
+,
+<a href="https://user-images.githubusercontent.com/80302108/161105223-3c9a8ea5-b013-4bf2-a5be-1269322485bc.PNG">로그인</a>
+
+```css
+/* 사이드바 */
+input[id='menuicon'] {
+  display: none;
+}
+input[id='menuicon'] + label {
+  display: block;
+  margin: 30px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  cursor: pointer;
+  top: -13.5px;
+  right: 0;
+}
+input[id='menuicon'] + label span {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  border-radius: 30px;
+  background: #000;
+  transition: all 0.35s;
+}
+
+div[class='sidebar'] {
+  width: 300px;
+  height: 100%;
+  background: rgba(255, 255, 255);
+  position: fixed;
+  top: 0;
+  left: -300px;
+  /* 왼쪽에 있다가 나오도록 동작하는 부분 */
+  z-index: 9999;
+  transition: all 0.35s;
+  border-right: 1px solid #ccc;
+}
+```
+
+---
+
 ### [3월 30일]
 
 ```
-▶ 회원가입,로그인,나만의 원두찾기 박스 디자인
+▶ 회원가입,나만의 원두찾기 박스 디자인
 ▶ 버튼 hover시 transition ease 효과
 ▶ 회원가입 상세페이지 제작
 ▶ 회원가입 상세페이지는 input태그를 주로 활용
