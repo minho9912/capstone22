@@ -44,6 +44,58 @@
 
 ---
 
+### [4월 1일]
+
+```
+▶ 원두, 드리퍼, 그라인더, 커피메이커 검색결과 화면 회의
+▶ 네이버쇼핑API, 11번가API를 활용하기로해봄
+   - php, node.js를 활용하려 했으나 오류로 실패
+▶ 파이썬을 활용해 상위 5개항목만 크롤링하기로함
+
+```
+
+```python
+from itertools import product
+from lib2to3.pgen2.token import AT
+from bs4 import BeautifulSoup
+
+
+def getProductInfo(li):
+  # print(li)
+  img = li.find("img")
+  alt = img['alt']
+  imgSrc = img['src']
+  aTag = li.find("a", {"class":"prdLink"})
+  aHref = aTag['href']
+
+  priceNum = li.find("span", {"class":"discountPrice"})
+
+
+  return {"img":imgSrc, "alt": alt, 'link': aHref , 'price': priceNum.text.replace(",","")}
+
+
+def parse(pageString):
+  bs0bj = BeautifulSoup(pageString, "html.parser")
+  ul = bs0bj.find("ul", {"class":"thumnailType"})
+  lis = ul.findAll("li")
+
+  products = []
+  for li in lis[:5]:
+      product = getProductInfo(li)
+      products.append(product)
+
+  return products
+
+
+```
+
+- 위 코드는 크롤링결과를 파싱해주는 파이썬코드이다.
+- BeautifulSoup을 활용해 html.parser기능으로 쇼핑몰의 ul과 li태그의 내용을 추출한다.
+- 추출된 내용은 products라는 빈배열에 담기고, 호출 파이썬파일에서 불러올수있다.
+- json으로 저장하고 html에서 불러오고 화면에 출력하는 것은 구현중이다.
+
+---
+
 ### [3월 31일]
 
 ```
