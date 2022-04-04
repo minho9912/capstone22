@@ -44,6 +44,53 @@
 
 ---
 
+### [4월 4일]
+
+```
+▶ 드리퍼, 그라인더, 커피메이커 화면 구상
+▶ 나라별 원두 슬라이드와 비슷한 hover효과를 주기로함
+▶ 상세페이지는 파이썬 크롤링 결과 화면과 함께 추후 제작 예정
+
+```
+
+<a href="https://user-images.githubusercontent.com/80302108/161595246-6d81dc09-3d3a-47af-b18a-ace1acbeac20.PNG">드리퍼,그라인더,메이커</a>
+
+```css
+#eq-box > .eq-hover {
+  position: absolute;
+  transform: translateY(0px);
+  width: 300px;
+  height: 50px;
+  /* border-radius: 20px; */
+  background-color: rgba(0, 0, 0, 0.674);
+  text-align: center;
+  line-height: 50px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.7rem;
+  transition: transform 0.5s;
+  animation: ease-in-out;
+}
+#eq-box {
+  transition: transform 0.5s;
+  animation: ease-in-out;
+  box-sizing: border-box;
+}
+#eq-box:hover {
+  transform: translateY(-10px);
+}
+
+#eq-box:hover > .eq-hover {
+  display: block;
+  transform: translateY(-50px);
+}
+```
+
+- 박스 hover시 transition과 transform을 활용한 animation효과를 주었다.
+- translate값을 조절하여 hover시 위로 자연스럽게 올라가는 효과이다.
+
+---
+
 ### [4월 1일]
 
 ```
