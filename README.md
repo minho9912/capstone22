@@ -44,6 +44,76 @@
 
 ---
 
+### [4월 5일(2)]
+
+```
+▶ (2) 회사소개 상세페이지 구현
+▶ 카카오맵 API를 활용해 대림대학교 전산관 위치로 지도를 출력하게 하고
+자가용 및 도보와 같은 방식의 약도를 구현함.
+```
+
+<a href="https://user-images.githubusercontent.com/80302108/161799176-e7c1d45d-eeb6-4d96-a7c4-eb08d4c8c781.png">회사소개</a>
+
+```javascript
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9287b9973450a6e825755a3446a897cb"></script>
+    <script>
+     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+    mapOption = {
+        center: new kakao.maps.LatLng(37.40402, 126.93060), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도 생성
+
+// 마커를 표시할 위치와 내용을 가지고 있는 객체 배열
+var positions = [
+    {
+        content: '<div style="text-align:center; padding-left:35px">대림대학교<br>전산관</div>',
+        latlng: new kakao.maps.LatLng(37.40402, 126.93060)
+    },
+
+];
+
+for (var i = 0; i < positions.length; i ++) {
+    // 마커 생성
+    var marker = new kakao.maps.Marker({
+        map: map, // 마커를 표시할 지도
+        position: positions[i].latlng // 마커의 위치
+    });
+
+    // 마커에 표시할 인포윈도우를 생성
+    var infowindow = new kakao.maps.InfoWindow({
+        content: positions[i].content // 인포윈도우에 표시할 내용
+    });
+
+    // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록
+    // 이벤트 리스너로는 클로저를 만들어 등록
+    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록
+    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+}
+
+// 인포윈도우를 표시하는 클로저를 만드는 함수
+function makeOverListener(map, marker, infowindow) {
+    return function() {
+        infowindow.open(map, marker);
+    };
+}
+
+// 인포윈도우를 닫는 클로저를 만드는 함수
+function makeOutListener(infowindow) {
+    return function() {
+        infowindow.close();
+    };
+}
+    </script>
+```
+
+- 회사소개에 위치는 필수라고 생각하여 전산관으로 등록함
+- 고객마다 회사에 방문하는 방식이 다를 수 있어 다양한 루트별 약도를 표시함
+
+---
+
 ### [4월 5일]
 
 ```
@@ -51,7 +121,7 @@
 ▶ html파일을 여러개 만드는 것 보다 js를 사용해 쿼리스트링값에 따른 내용변경 기능 구현하기로 함
 ```
 
-<a href="https://user-images.githubusercontent.com/80302108/161797243-e81f48af-76c2-4f0c-90fe-21d6c42f55ba.png">나라별원두</a>
+<a href="https://user-images.githubusercontent.com/80302108/161799168-b9f3616d-732b-43ee-9b2e-fac4486f66da.png">나라별원두</a>
 
 ```javascript
 //common.js
