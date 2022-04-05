@@ -49,9 +49,9 @@
 ```
 ▶ (1) 나라별 원두 상세페이지 구현
 ▶ html파일을 여러개 만드는 것 보다 js를 사용해 쿼리스트링값에 따른 내용변경 기능 구현하기로 함
-
-
 ```
+
+<a href="https://user-images.githubusercontent.com/80302108/161797243-e81f48af-76c2-4f0c-90fe-21d6c42f55ba.png">나라별원두</a>
 
 ```javascript
 //common.js
