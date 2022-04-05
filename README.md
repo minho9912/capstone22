@@ -6,7 +6,7 @@
 팀원: 최민호(팀장 | 웹퍼블리싱) , 오승엽(팀원 | 웹디자인)
 ```
 
-- 졸업작품 소개사이트 : https://minho9912.github.io/AllAbuotCoffee/
+- 졸업작품 소개사이트 : https://minho9912-allaboutcoffee.netlify.app/
 
 ---
 
@@ -41,6 +41,44 @@
 ---
 
 ## [개발일지]
+
+---
+
+### [4월 5일]
+
+```
+▶ (1) 나라별 원두 상세페이지 구현
+▶ html파일을 여러개 만드는 것 보다 js를 사용해 쿼리스트링값에 따른 내용변경 기능 구현하기로 함
+
+
+```
+
+```javascript
+//common.js
+kenya = () => {
+  location.href = '../beans-info/beans-info.html?beans=kenya';
+};
+tan = () => {
+  location.href = '../beans-info/beans-info.html?beans=tanzania';
+};
+// ..일부생략
+// beans.js
+let url = new URL(window.location.href).searchParams;
+let url_name = url.get('beans');
+let bean_name = document.querySelector('.beans-info > .beans-name');
+let bean_img = document.querySelector('.beans-info > img');
+let bean_sub = document.querySelector('.beans-sub');
+
+if (url_name == 'kenya') {
+  bean_name.innerHTML = '원두이름';
+  bean_img.src = '이미지경로';
+  bean_sub.innerHTML = '원두소개 내용';
+}
+```
+
+- JSP시간에 배운 쿼리스트링을 떠올려 a태그 버튼을 누르면 그 원두에 맞는 값이 beans-info.html의 쿼리스트링값으로 들어간다.
+- URL메소드를 사용해 받아온 url값을 searchParams속성으로 받아 온 후 , get방식으로 beans라는 쿼리스트링의 변수이름을 가져온다.
+- 그 후 dom과 if문을 활용해 변수이름에 따라 상세페이지에 출력될 원두이름과 사진, 원두소개 내용이 바뀌면서 출력된다.
 
 ---
 
