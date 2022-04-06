@@ -51,6 +51,8 @@
 ▶ 쇼핑몰 검색결과 크롤링json파일 html에서 불러오기 구현
 ▶ XMLHttpRequest속성을 사용해 Array와 for, dom의 createElement를 사용하여
    table의 tr,td내용으로 삽입해주었음.
+▶ 원두별 상세페이지에 유튜브api를 활용한 영상을 넣으려했으나,api를 사용하면 한페이지에 한개씩밖에 못넣음.
+▶ iframe태그를 활용해서 영상을 넣었음
 ```
 
 <a href="https://user-images.githubusercontent.com/80302108/161999524-25123779-b7e8-4994-91f3-9fa777e0e053.PNG">크롤링</a>
