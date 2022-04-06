@@ -45,6 +45,97 @@
 
 ---
 
+### [4월 6일]
+
+```
+▶ 쇼핑몰 검색결과 크롤링json파일 html에서 불러오기 구현
+▶ XMLHttpRequest속성을 사용해 Array와 for, dom의 createElement를 사용하여
+   table의 tr,td내용으로 삽입해주었음.
+```
+
+<a href="https://user-images.githubusercontent.com/80302108/161999524-25123779-b7e8-4994-91f3-9fa777e0e053.PNG">크롤링</a>
+
+```javascript
+let xhttp = new XMLHttpRequest();
+
+xhttp.onreadystatechange = function () {
+  if (xhttp.readyState == 4 && xhttp.status == 200) {
+    jsonfunc(this.responseText);
+  }
+};
+
+let beans_grp = '../himart.json';
+let table_grp = document.querySelector('#table');
+
+xhttp.open('GET', beans_grp, true);
+xhttp.send();
+
+first = () => {
+  while (table_grp.firstChild) {
+    table_grp.removeChild(table_grp.lastChild);
+  }
+  xhttp.open('GET', '../kenya.json', true);
+  xhttp.send();
+};
+second = () => {
+  while (table_grp.firstChild) {
+    table_grp.removeChild(table_grp.lastChild);
+  }
+  xhttp.open('GET', '../tanzania.json', true);
+  xhttp.send();
+};
+//이하생략..
+
+function jsonfunc(jsonText) {
+  let arrTitle = new Array();
+  let arrPrice = new Array();
+  let arrImg = new Array();
+  let arrIink = new Array();
+
+  let json = JSON.parse(jsonText);
+
+  for (i = 0; i < json.length; i++) {
+    // 값 전체 가져오는법
+    arrTitle[i] = json[i].alt;
+    arrPrice[i] = json[i].price;
+    arrImg[i] = json[i].img;
+    arrIink[i] = json[i].link;
+  }
+  let table = document.getElementById('table');
+
+  for (i = 0; i < arrTitle.length; i++) {
+    let tr = document.createElement('tr');
+
+    let td1 = document.createElement('td');
+    let link = document.createElement('a');
+    td1.appendChild(link);
+    link.setAttribute('href', 'http://www.e-himart.co.kr' + arrIink[i]);
+    link.appendChild(document.createTextNode(arrTitle[i] + ''));
+
+    let td2 = document.createElement('td');
+    td2.appendChild(document.createTextNode(arrPrice[i] + ''));
+
+    let td3 = document.createElement('td');
+    let img = document.createElement('img');
+    img.setAttribute('src', arrImg[i]);
+
+    td3.appendChild(img);
+
+    tr.appendChild(td3);
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+
+    table.appendChild(tr);
+  }
+}
+```
+
+- json의 변수 갯수만큼 Array객체를 생성함
+- for문을 사용해 각 Array객체의[i]값에 json파일의 변수를 넣어줌.
+- getElementById를 사용해 table을 지정하고 이 table에 createElement,createTextNode를 사용하여 요소를 생성하게함.
+
+---
+
 ### [4월 5일(2)]
 
 ```
