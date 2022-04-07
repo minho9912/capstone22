@@ -7,7 +7,7 @@
 ```
 
 - 졸업작품 소개사이트 : https://minho9912.github.io/DoubleProject/
-- 졸업작품 링크 : https://minho9912-allaboutcoffee.netlify.app/
+- 졸업작품 링크 : 수정중
 
 ---
 
