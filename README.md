@@ -45,6 +45,81 @@
 
 ---
 
+### [4월 7일]
+
+```
+▶ 나라별 원두 슬라이드 형태 수정 회의
+▶ 기존의 슬라이드 형태는 매우 평범했음, 카드형태로 구현하기로함
+▶ swiper라이브러리 기능을 활용하기로 결정
+
+
+```
+
+<a href="https://user-images.githubusercontent.com/80302108/162464002-9a49727e-7e9f-4290-9ead-1b894f6af06b.PNG">슬라이드</a>
+<a href="https://user-images.githubusercontent.com/80302108/162464121-0f71492d-0e99-4274-b35a-8726588e9eec.PNG">나만의원두</a>
+
+```javascript
+var swiper = new Swiper('.beans-slide', {
+  effect: 'cards',
+  grabCursor: true,
+  pagination: {
+    el: '.beans-slide > .swiper-pagination',
+    clickable: true,
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+});
+```
+
+- swiper라이브러리에서 지원하는 cards모드 사용
+
+```javascript
+ var result = {
+        SBR: {
+          champion: '신맛과 단맛의 조화, <strong> 케냐 </strong>',
+          explain:
+            '케냐는 커피를 생산하기에 아주 적합한 기후조건을 가지고있다.<br>덕분에 풍부한 향과 맛의 밸런스가 아주 훌륭하다.누구에게나 무난하게 추천하는 원두이다',
+          img: '../img/나라별원두/케냐.png',
+        },
+        SBE: {
+          champion: '레몬, 감귤과 같은 기분 좋은 사미! <strong> 예가체프 </strong>',
+          explain: '부드럽고 다양한 향이 감도는것이 특징"커피의 귀부인"이라는 별칭이 있을 만큼최상의 원두로 평가받고있다.',
+          img: '../img/나라별원두/에티오피아.png',
+        },
+      function next() {
+        if (num == 7) {
+          $('.question').hide();
+          $('.result').show();
+          var mbti = '';
+          $('#ST').val() < 1 ? (mbti += 'S') : (mbti += 'T');
+          $('#BN').val() < 1 ? (mbti += 'B') : (mbti += 'N');
+          $('#RE').val() < 1 ? (mbti += 'R') : (mbti += 'E');
+          $('#img').attr('src', result[mbti]['img']);
+          $('#champion').html(result[mbti]['champion']);
+          $('#explain').html(result[mbti]['explain']);
+          $('#img2').attr('src', result[mbti]['img2']);
+          $('#img3').attr('src', result[mbti]['img3']);
+          $('#img4').attr('src', result[mbti]['img4']);
+          $('.coffee-box').hide();
+        } else {
+          $('.progress-bar').attr('style', 'width: calc(100/7*' + num + '%');
+          $('#title').html(q[num]['title']);
+          $('#type').val(q[num]['type']);
+          $('#A').html(q[num]['A']);
+          $('#B').html(q[num]['B']);
+          num++;
+        }
+      }
+```
+
+- 문제마다 A에 해당하는 답변 버튼을 클릭시 ST,BN,RE중 하나의 변수값이 +1 증가한다.
+- 2개씩 총 6문제가 존재하며 중첩된 값에 따라 mbti라는 변수에 앞 혹은 뒷 글자를 넣는다.
+- 합쳐진 글자가 result변수와 같은것이 있으면 이를 바탕으로 원두사진과 설명을 출력한다.
+
+---
+
 ### [4월 6일]
 
 ```
