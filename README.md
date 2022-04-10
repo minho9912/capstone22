@@ -45,6 +45,65 @@
 
 ---
 
+### [4월 10일]
+
+```
+▶ 원두 크롤링 페이지에 원두별 페이지 추가 구현
+▶ 나라별 원두 이름 클릭시 그것에 맞는 크롤링결과가 출력되게함.
+```
+
+<a href="https://user-images.githubusercontent.com/80302108/162608615-3a9890a7-a706-479c-bc94-4c866ed055e5.PNG">게시판</a> <br>
+
+```python
+import json
+
+import crawler as crawl
+import pars as parse
+
+pageString = crawl.crawl('')
+products = parse.parse(pageString)
+
+
+file = open("./columbia.json","w+")
+file.write(json.dumps(products))
+```
+
+```html
+<table id="table" border="1" cellpadding="10" rules="rows">
+  <h1 class="search-box">원두 검색결과</h1>
+  <div class="search-beans inner">
+    <a onclick="first()">케냐</a>
+    <a onclick="second()">탄자니아</a>
+    <a onclick="third()">산토스</a>
+    <!-- ...이하생략 -->
+  </div>
+
+  <tr></tr>
+</table>
+```
+
+```javascript
+let beans_grp = '../himart.json';
+let table_grp = document.querySelector('#table');
+
+xhttp.open('GET', beans_grp, true);
+xhttp.send();
+
+first = () => {
+  while (table_grp.firstChild) {
+    table_grp.removeChild(table_grp.lastChild);
+  }
+  xhttp.open('GET', '../kenya.json', true);
+  xhttp.send();
+};
+```
+
+- beans 버튼을 누름과 동시에 파이썬 코드가 실행되면서 나라별 원두에 맞는 크롤링결과를 검색.
+- 검색된 크롤링 결과를 각 원두이름에맞는 json파일로 저장함.
+- 원두 검색결과 상세페이지에서 나라별 원두 버튼을 클릭하면 해당 json파일을 실시간으로 불러옴.
+
+---
+
 ### [4월 9일]
 
 ```
@@ -119,13 +178,13 @@ var swiper = new Swiper('.beans-slide', {
 ```javascript
  var result = {
         SBR: {
-          champion: '신맛과 단맛의 조화, <strong> 케냐 </strong>',
+          beans: '신맛과 단맛의 조화, <strong> 케냐 </strong>',
           explain:
             '케냐는 커피를 생산하기에 아주 적합한 기후조건을 가지고있다.<br>덕분에 풍부한 향과 맛의 밸런스가 아주 훌륭하다.누구에게나 무난하게 추천하는 원두이다',
           img: '../img/나라별원두/케냐.png',
         },
         SBE: {
-          champion: '레몬, 감귤과 같은 기분 좋은 사미! <strong> 예가체프 </strong>',
+          beans: '레몬, 감귤과 같은 기분 좋은 사미! <strong> 예가체프 </strong>',
           explain: '부드럽고 다양한 향이 감도는것이 특징"커피의 귀부인"이라는 별칭이 있을 만큼최상의 원두로 평가받고있다.',
           img: '../img/나라별원두/에티오피아.png',
         },
@@ -138,7 +197,7 @@ var swiper = new Swiper('.beans-slide', {
           $('#BN').val() < 1 ? (mbti += 'B') : (mbti += 'N');
           $('#RE').val() < 1 ? (mbti += 'R') : (mbti += 'E');
           $('#img').attr('src', result[mbti]['img']);
-          $('#champion').html(result[mbti]['champion']);
+          $('#champion').html(result[mbti]['beans']);
           $('#explain').html(result[mbti]['explain']);
           $('#img2').attr('src', result[mbti]['img2']);
           $('#img3').attr('src', result[mbti]['img3']);
