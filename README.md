@@ -53,24 +53,7 @@
 ▶ 덧글달기기능이나, 게시판 등록같은 백엔드기능은 추후 시도해볼예정
 ```
 
-<a href="https://user-images.githubusercontent.com/80302108/162464002-9a49727e-7e9f-4290-9ead-1b894f6af06b.PNG">슬라이드</a> <br>
-
-```javascript
-var swiper = new Swiper('.beans-slide', {
-  effect: 'cards',
-  grabCursor: true,
-  pagination: {
-    el: '.beans-slide > .swiper-pagination',
-    clickable: true,
-  },
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-});
-```
-
-- swiper라이브러리에서 지원하는 cards모드 사용
+<a href="https://user-images.githubusercontent.com/80302108/162608615-3a9890a7-a706-479c-bc94-4c866ed055e5.PNG">게시판</a> <br>
 
 ```html
 <div class="board_wrap">
