@@ -45,14 +45,72 @@
 
 ---
 
+### [4월 9일]
+
+```
+▶ 공지사항 게시판 디자인 구상
+▶ 스타벅스, 이디야커피 홈페이지 벤치마킹결과 심플한 디자인으로 만들기로 함
+▶ 덧글달기기능이나, 게시판 등록같은 백엔드기능은 추후 시도해볼예정
+```
+
+<a href="https://user-images.githubusercontent.com/80302108/162464002-9a49727e-7e9f-4290-9ead-1b894f6af06b.PNG">슬라이드</a> <br>
+
+```javascript
+var swiper = new Swiper('.beans-slide', {
+  effect: 'cards',
+  grabCursor: true,
+  pagination: {
+    el: '.beans-slide > .swiper-pagination',
+    clickable: true,
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+});
+```
+
+- swiper라이브러리에서 지원하는 cards모드 사용
+
+```html
+<div class="board_wrap">
+  <div class="board_title">
+    <strong>공지사항</strong>
+    <p>공지사항을 빠르고 정확하게 안내해드립니다.</p>
+  </div>
+  <div class="board_list_wrap">
+    <div class="board_list">
+      <div class="top">
+        <div class="num">번호</div>
+        <div class="title">제목</div>
+        <div class="writer">글쓴이</div>
+        <div class="date">작성일</div>
+        <div class="count">조회</div>
+      </div>
+      <div>
+        <div class="num">1</div>
+        <div class="title"><a href="./notice_list/notice1.html">첫번째 공지사항</a></div>
+        <div class="writer">관리자</div>
+        <div class="date">2022.3.19</div>
+        <div class="count count_1">0</div>
+      </div>
+      <!-- 이하생략.. -->
+    </div>
+  </div>
+</div>
+```
+
+- 공지사항 게시판의 메인 행 부분에는 번호,제목,글쓴이,작성일,조회가 등록되어있다.
+- 제목 부분 공지사항을 클릭하면 각각 등록된 HTML파일 경로로 이동한다.
+
+---
+
 ### [4월 8일]
 
 ```
 ▶ 나라별 원두 슬라이드 형태 수정 회의
 ▶ 기존의 슬라이드 형태는 매우 평범했음, 카드형태로 구현하기로함
 ▶ swiper라이브러리 기능을 활용하기로 결정
-
-
 ```
 
 <a href="https://user-images.githubusercontent.com/80302108/162464002-9a49727e-7e9f-4290-9ead-1b894f6af06b.PNG">슬라이드</a> <br>
