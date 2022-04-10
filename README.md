@@ -52,7 +52,7 @@
 ▶ 나라별 원두 이름 클릭시 그것에 맞는 크롤링결과가 출력되게함.
 ```
 
-<a href="https://user-images.githubusercontent.com/80302108/162608615-3a9890a7-a706-479c-bc94-4c866ed055e5.PNG">게시판</a> <br>
+<a href="https://user-images.githubusercontent.com/80302108/162610617-0b54ea2b-a967-4481-a4b8-9ea9f261ca60.PNG">검색</a> <br>
 
 ```python
 import json
