@@ -45,6 +45,49 @@
 
 ---
 
+### [4월 13일]
+
+```
+▶ 커피의 효능 부분 4가지 효능 박스 스크롤 이벤트 추가
+▶ .throttle을 사용해 스크롤 값이 박스부분을 넘어갈 경우
+translateY값 제어를 통해 아래에서 위로 올라오는 효과를 주었음
+```
+
+```javascript
+const move_item = document.querySelectorAll('.info-box');
+
+// _.throttle (함수, 시간)
+window.addEventListener(
+  'scroll',
+  _.throttle(function () {
+    console.log(window.scrollY);
+    if (window.scrollY > 350) {
+      //배지 숨기기
+      //gsap.to(요소, 지속시간, 옵션)
+
+      //버튼 보이기
+      gsap.to(move_item, 0.2, {
+        y: 0,
+      });
+    } else {
+      // 배지 보여주기
+      //gsap.to(요소, 지속시간, 옵션)
+
+      //버튼 숨기기
+
+      gsap.to(move_item, 0, {
+        y: 200,
+      });
+    }
+  }, 300)
+);
+```
+
+- window.scrollY를 통한 스크롤값을 콘솔을 통해 알 수 있도록 만든다.
+- 그리고 if조건문을 활용해 특정 영역의 스크롤값을 넘게되면 요소가 일정 시간동안 올라오고, 넘지 않게되면 다시 내려간다
+
+---
+
 ### [4월 10일]
 
 ```
