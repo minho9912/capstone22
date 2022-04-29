@@ -46,10 +46,50 @@
 ### [4월 20일]
 
 ```
+▶ 회원가입 페이지 디자인 수정
+▶ 정돈되지 않은 느낌의 회원가입 페이지의 body에 이미지를 삽입
+▶ border radius를 활용해 회원가입 창 부분을 모서리가 둥근 사각형으로 제작
+▶ 사진 위에 화면이 떠있는 효과를 주었음
+```
+
+```css
+<style >
+body {
+  background-image: url('../img/커피고화질2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+ .sign > .sign-box {
+  width: auto;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0px;
+  background-color: rgb(255, 255, 255);
+}
+.sign > .sign-box:nth-child(1) {
+  border-radius: 10px 10px 0px 0px;
+}
+.sign > .sign-box:nth-child(7) {
+  border-radius: 0px 0px 10px 10px;
+}
+</style >
+```
+
+---
+
+- body의 background-image를 커피사진으로 변경.
+- 회원가입 각 요소는 input태그가 합쳐진 것으로, 처음것과 끝부분 것만 radius적용
+
+---
+
+### [4월 20일]
+
+```
 ▶ 사이트에 들어갈 컨텐츠 요소가 부족하다고 생각되어 나라별 원두 블렌딩 시스템 구현결정함.
 ▶ 신맛,단맛으로 구분되어 있는 원두별 그림을 클릭하면 프로세스바가 올라가고, 블렌딩원두의 비율이 나타나게 구현할 예정.
 ▶ 나라별 원두 슬라이드 가로로 정렬 후 이미지 변경.
 ▶ heroku 도메인을 사용해 node.js , express를 활용한 db연동 예정
+
 
 ```
 
