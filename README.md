@@ -43,6 +43,87 @@
 
 ## [개발일지]
 
+### [5월 1일]
+
+```
+▶ 자유게시판 (소통) 기능 구현
+▶ 도메인 구축을 통한 DB연동 실패
+▶ 로컬스토리지를 활용한 임시적인 데이터 저장 기능 구현
+
+```
+
+```jsx
+<section>
+      <script src="../js/board.js"></script>
+  </section>
+  <section class="page">
+
+  </section>
+  <section style="margin-top:2vh; margin-left:5vw; margin-bottom:1vh;">
+      <a href="write.html"><input type="button" value="글쓰기" class="btn btn-board"></input></a> &nbsp;
+  </section>
+
+  <div id="body-wrapper">
+    <div id="body-content"></div>
+    </div>
+
+let list = localStorage.getItem('postings');
+let parsedList = JSON.parse(list);
+let number;
+if (parsedList !== null) {
+  number = parsedList.length - 1;
+}
+
+function makeTable(variable, variable2) {
+  let table = document.createElement('table');
+  table.style.marginTop = '3vh';
+  table.style.marginLeft = '5vw';
+  table.style.marginRight = '5vw';
+
+  let firstRow = document.createElement('tr');
+  firstRow.style.textAlign = 'center';
+  firstRow.style.color = '#fff';
+  firstRow.style.fontWeight = 'bold';
+  firstRow.style.fontSize = '1.8rem';
+  firstRow.style.backgroundColor = 'rgb(141, 180, 141)';
+
+  let index = document.createElement('td');
+  let indexText = document.createTextNode('번호');
+  index.appendChild(indexText);
+  index.style.width = '15vw';
+  index.style.paddingTop = '1.5vh';
+  index.style.paddingBottom = '1.5vh';
+  index.style.border = '1px #e3e3e3 solid';
+  firstRow.appendChild(index);
+
+  let title = document.createElement('td');
+  let titleText = document.createTextNode('제목');
+  title.appendChild(titleText);
+  title.style.border = '1px #e3e3e3 solid';
+  title.style.width = '60vw';
+  firstRow.appendChild(title);
+
+  let date = document.createElement('td');
+  let dateText = document.createTextNode('작성일');
+  date.appendChild(dateText);
+  date.style.width = '50vw';
+  date.style.border = '1px #e3e3e3 solid';
+  firstRow.appendChild(date);
+
+  table.appendChild(firstRow);
+ // ..이하 샐략
+```
+
+- 로컬스토리지를 사용해 getItem으로 write.html의 입력값을 읽어온다.
+- 받아온 입력값을 DOM을 사용한 createElement,appendChild를 사용해 표에 넣어준다.
+
+---
+
+- body의 background-image를 커피사진으로 변경.
+- 회원가입 각 요소는 input태그가 합쳐진 것으로, 처음것과 끝부분 것만 radius적용
+
+---
+
 ### [4월 27일]
 
 ```
