@@ -43,6 +43,82 @@
 
 ## [개발일지]
 
+### [5월 13일]
+
+```
+▶ 로그인 기능 추가
+   ▶로컬스토리지 setItem,removeItem / js의 and연산자 / location.href 사용
+   ▶&&연산자를 통해 input값의 id,pwd 문자열값을 로컬스토리지의 id,pw와 비교후 로그인.
+   ▶버튼의 text값 변경은 구버전의 innerHTML이 아닌 textContent를 사용해 값을 변경.
+
+```
+
+- <a href="https://user-images.githubusercontent.com/80302108/168202826-6c62447a-8e7f-4e2c-b665-3f5603ddf17e.PNG)
+  2108/168200858-679f8fa3-ab4f-4741-942b-b71c62492e6b.PNG">이미지링크</a>
+
+```html
+//로그인 form
+<section class="inner login">
+  <div class="login-page">
+    <img src="../img/logo3.png" alt="logo3" width="250px" />
+    <label for="">
+      <span class="uid">아이디</span>
+      <input type="text" name="login_id" id="login-id" /><br /><br />
+      <span class="upwd">비밀번호</span>
+      <input type="password" name="login_id" id="login-pw" />
+    </label>
+    <br />
+    <br />
+    <br />
+    <button onclick="json2()">로그인</button>
+
+    <hr />
+    <div class="searching">
+      <a href="javascript:void(0)">아이디 찾기</a>
+      <a href="javascript:void(0)">비밀번호 찾기</a>
+      <a href="./sign.html">회원가입</a>
+    </div>
+    <hr />
+  </div>
+</section>
+```
+
+```jsx
+//로그인 js소스코드
+// 로그인확인
+function json2() {
+  let uid = document.getElementById('login-id').value;
+  let upw = document.getElementById('login-pw').value;
+  let idx = localStorage.length;
+
+  let i = 0;
+  let btn = document.querySelector('button');
+  do {
+    if (`"${uid}"` == localStorage.getItem(`uid${i}`) && `"${upw}"` == localStorage.getItem(`upw${i}`)) {
+      localStorage.setItem('login', uid);
+      localStorage.setItem('state', 'true');
+      window.location.href = '../index.html';
+      alert('환영합니다.');
+      break;
+    } else {
+      btn.textContent = '없는 계정입니다.';
+    i++;
+  } while (i <= idx);
+}
+```
+
+- labael과 input태그를 활용해 회원가입 폼을 생성함
+- buttin의 onclick이벤트로 json2이라는 함수가 실행되도록 함.(클릭시 실행되는 함수)
+- js의 경우 input태그의 입력값을 저장하는 uid와 upw, 로컬스토리지 크기를 담고있는 idx변수를 선언.
+- do~while문 사용. i=0 <= idx조건으로 반복함.
+- if문을 사용해 uid의 값이 uid[i]값과 같고(and) upw값이 upw[i]값과 같은가?
+- 같다면 setItem으로 로컬스토리지에 loign이라는 key값을 생성후 uid값을 넣어줌.(로그인 상태 확인 위함)
+- 또한 state라는 key값에 true라는 값을 넣어줌.(로그인 상태 유지 위함)
+- location.href로 메인화면으로 이동.(사이드바 자동수정 위함)
+- 해당 코드 실행후 break문으로 빠져나감. else문이 실행되면 버튼의 텍스트값을 변경해줌.
+
+---
+
 ### [5월 12일]
 
 ```
@@ -55,51 +131,49 @@
 
 - <a href="https://user-images.githubusercontent.com/80302108/168200858-679f8fa3-ab4f-4741-942b-b71c62492e6b.PNG">이미지링크</a>
 
-```jsx
+```html
 //회원가입 form
 <div class="sign inner">
+  <div class="sign-box">
+    <label for="">
+      <img src="../img/logo3.png" alt="사진" width="200" />
+      <span>아이디</span>
+      <br /><input type="text" name="user_id" id="user-id" />
+    </label>
+  </div>
+  <div class="sign-box">
+    <label for="" id="pass">
+      <span class="user-pwd">비밀번호 </span>
+      <br /><input type="password" name="user_id" id="user-pass" />
+    </label>
+  </div>
+  <div class="sign-box">
+    <label for="">
+      <span>이름</span>
+      <br /><input type="text" name="user_id" id="user-id" />
+    </label>
+  </div>
+  <div class="sign-box">
+    <label for="">
+      <span>생년월일</span>
+      <br /><input type="text" name="user_id" id="user-info" placeholder="년(4자리)" />
+      <select name="user_birth" id="user-birth">
+        <option value="월">월</option>
+      </select>
+      <input type="text" name="user_id" id="user-info" placeholder="일" />
+    </label>
+  </div>
+  <div class="sign-box">
+    <label for="">
+      <span>이메일</span>
+      <br /><input type="text" name="user_id" id="user-id" placeholder="선택사항" />
+    </label>
+  </div>
 
-      <div class="sign-box">
-        <label for="">
-          <img src="../img/logo3.png" alt="사진" width="200">
-          <span>아이디</span>
-          <br><input type="text" name="user_id" id="user-id">
-        </label>
-      </div>
-      <div class="sign-box">
-        <label for="" id="pass">
-          <span class="user-pwd">비밀번호
-          </span>
-          <br><input type="password" name="user_id" id="user-pass">
-        </label>
-      </div>
-      <div class="sign-box">
-        <label for="">
-          <span>이름</span>
-          <br><input type="text" name="user_id" id="user-id">
-        </label>
-      </div>
-      <div class="sign-box">
-        <label for="">
-          <span>생년월일</span>
-          <br><input type="text" name="user_id" id="user-info" placeholder="년(4자리)">
-          <select name="user_birth" id="user-birth">
-            <option value="월">월</option>
-          </select>
-          <input type="text" name="user_id" id="user-info" placeholder="일">
-        </label>
-      </div>
-      <div class="sign-box">
-        <label for="">
-          <span>이메일</span>
-          <br><input type="text" name="user_id" id="user-id" placeholder="선택사항">
-        </label>
-      </div>
-
-      <div class="sign-box">
-        <button id="signin-btn" onclick="json1()">가입하기</button>
-      </div>
-    </div>
+  <div class="sign-box">
+    <button id="signin-btn" onclick="json1()">가입하기</button>
+  </div>
+</div>
 ```
 
 ```jsx
