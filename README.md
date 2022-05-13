@@ -43,6 +43,93 @@
 
 ## [개발일지]
 
+### [5월 11일]
+
+```
+▶ 메인 홈페이지 나라별 원두 슬라이드 박스 제거 및 배경이미지 수정완료
+   ▶ 세계지도를 활용해 지도 위에 나라별 국기를 올려놓은 형태로 제작
+▶ 원두 블렌딩 시스템 구현완료
+   ▶ js DOM, css before 등을 활용함. footer에 나라별 원두를 위치시키고 고를 수 있게하였고, 조합기능 및 재선택 기능 추가.(함수사용)
+
+```
+
+<a href="https://user-images.githubusercontent.com/80302108/168191882-99121a39-e086-4376-9d86-959ff96206e2.PNG">이미지 링크</a>
+
+```jsx
+// footer의 선택한 원두별 함수 부분, 이하생략
+function kenya() {
+  if (box_list.length < 2) {
+    box_list.push('kenya');
+    document.querySelector('.kenya').style.display = 'none';
+  } else {
+    alert('두개만 선택가능합니다');
+    return;
+  }
+
+  if (fst_value == false) {
+    fst_beh.style.display = 'none';
+    fst_value = true;
+    fst_top.innerHTML = 'Kenya';
+    fst_cen.innerHTML = "'신맛과 단맛의 조화, 모든 부분에 밸런스가 좋은 커피'";
+    fst_bot.src = '../img/나라/국기/케냐.png';
+  } else {
+    sec_beh.style.display = 'none';
+    sec_value = true;
+    sec_top.innerHTML = 'Kenya';
+    sec_cen.innerHTML = "'신맛과 단맛의 조화, 모든 부분에 밸런스가 좋은 커피'";
+    sec_bot.src = '../img/나라/국기/케냐.png';
+  }
+}
+```
+
+```jsx
+//조합 기능함수
+function mix() {
+  if (box_list.length <= 1) {
+    alert('조합할 원두가 없습니다.');
+  }
+
+  if (box_list.includes('kenya') && box_list.includes('ethiopia')) {
+    thd_beh.style.display = 'none';
+    thd_fst.style.height = '200px';
+    thd_fst.style.backgroundColor = '#d67474';
+    thd_sec.style.height = '180px';
+    thd_sec.style.backgroundColor = '#d67474';
+    thd_thd.style.height = '100px';
+    thd_thd.style.backgroundColor = '#d67474';
+  }
+  if (box_list.includes('kenya') && box_list.includes('brazil')) {
+    thd_beh.style.display = 'none';
+    thd_fst.style.height = '150px';
+    thd_fst.style.backgroundColor = '#d67474';
+    thd_sec.style.height = '120px';
+    thd_sec.style.backgroundColor = '#d67474';
+    thd_thd.style.height = '130px';
+    thd_thd.style.backgroundColor = '#d67474';
+  }
+  //if...이하생략
+}
+// 위와같은 if문과 includes 사용, 모든 조합 가능한 원두 if문 생성함, 이하 생략
+```
+
+```jsx
+// 재선택 버튼
+function reset() {
+  if (box_list.length >= 1) {
+    window.location.reload();
+  } else {
+    alert('선택된 항목이 없습니다.');
+  }
+}
+//재선택 버튼을 클릭했을때의 조건, 아래에서 설명.
+```
+
+- footer의 나라별 원두 박스 선택시, box_list배열의 크기가 2보다 작으면 원두를 블렌딩 박스에 넣으면서 선택한 원두는 display를 none처리한다.<br> 만약 첫번째 박스가 차있으면 두번째 박스에 원두를 넣는다.
+- mix함수의 경우 box_list배열의 크기가 1보다 작거나 같으면(블렌딩 박스 두개가 모두 차있지 않으면)<br>alert로 경고문을 출력한다. 그렇지 않다면 조합그래프의 첫번째~세번째 그래프의 height값을 각각 다르게 증가시킨다.
+- reset함수의 경우 box_list배열의 크기가 1보다 크거나 같다면(한개라도 선택되어있다면) 해당 브라우저를 새로고침 시킨다.(초기화)<br>그렇지 않다면 alert로 경고문을 출력한다.
+
+---
+
 ### [5월 4일]
 
 ```
