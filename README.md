@@ -53,8 +53,7 @@
 
 ```
 
-- <a href="https://user-images.githubusercontent.com/80302108/168202826-6c62447a-8e7f-4e2c-b665-3f5603ddf17e.PNG)
-  2108/168200858-679f8fa3-ab4f-4741-942b-b71c62492e6b.PNG">이미지링크</a>
+- <a href="https://user-images.githubusercontent.com/80302108/168203154-bd325395-8f68-4bb3-9493-3e90ffc52195.PNG">이미지링크</a>
 
 ```html
 //로그인 form
