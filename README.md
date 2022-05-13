@@ -15,7 +15,7 @@
 
 - 작품명 : All About Coffee (AAC)
 
-- 개발환경 : HTML / CSS / JAVASCRIPT / PHOTOSHOP / XD
+- 개발환경 : HTML / CSS / JAVASCRIPT / PYTHON / PHOTOSHOP / XD
 
 ---
 
