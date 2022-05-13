@@ -43,6 +43,99 @@
 
 ## [개발일지]
 
+### [5월 12일]
+
+```
+▶ 회원가입 기능 추가
+   ▶로컬스토리지 setItem,getItem
+```
+
+```jsx
+//회원가입 form
+<div class="sign inner">
+
+      <div class="sign-box">
+        <label for="">
+          <img src="../img/logo3.png" alt="사진" width="200">
+          <span>아이디</span>
+          <br><input type="text" name="user_id" id="user-id">
+        </label>
+      </div>
+      <div class="sign-box">
+        <label for="" id="pass">
+          <span class="user-pwd">비밀번호
+          </span>
+          <br><input type="password" name="user_id" id="user-pass">
+        </label>
+      </div>
+      <div class="sign-box">
+        <label for="">
+          <span>이름</span>
+          <br><input type="text" name="user_id" id="user-id">
+        </label>
+      </div>
+      <div class="sign-box">
+        <label for="">
+          <span>생년월일</span>
+          <br><input type="text" name="user_id" id="user-info" placeholder="년(4자리)">
+          <select name="user_birth" id="user-birth">
+            <option value="월">월</option>
+          </select>
+          <input type="text" name="user_id" id="user-info" placeholder="일">
+        </label>
+      </div>
+      <div class="sign-box">
+        <label for="">
+          <span>이메일</span>
+          <br><input type="text" name="user_id" id="user-id" placeholder="선택사항">
+        </label>
+      </div>
+
+      <div class="sign-box">
+        <button id="signin-btn" onclick="json1()">가입하기</button>
+      </div>
+    </div>
+```
+
+```jsx
+//회원가입 js소스코드
+// 가입
+function json1() {
+  let uid = document.getElementById('user-id').value;
+  let upw = document.getElementById('user-pass').value;
+  let idx = localStorage.length;
+
+  // localStorage.clear();
+
+  let array_data = [];
+  for (let i = 0; i <= idx; i += 2) {
+    array_data.push(window.localStorage.getItem(`uid${i}`));
+  }
+
+  if (array_data.toString().split('"').includes(uid) == true) {
+    alert('중복된 계정입니다');
+    window.localStorage.removeItemItem(`uid${idx}`);
+  } else {
+    window.localStorage.setItem(`uid${idx}`, JSON.stringify(uid));
+    window.localStorage.setItem(`upw${idx}`, JSON.stringify(upw));
+    alert('가입완료');
+  }
+  // console.log(array_data.toString().split('"').includes(uid));
+}
+```
+
+- labael과 input태그를 활용해 회원가입 폼을 생성함
+- buttin의 onclick이벤트로 json1이라는 함수가 실행되도록 함.(클릭시 실행되는 함수)
+- js의 경우 input태그의 입력값을 저장하는 uid와 upw, 로컬스토리지 크기를 담고있는 idx변수를 선언.
+- array_data라는 로컬스토리지의 회원 정보를 담을 빈 배열을 선언.
+- 계정생성시 로컬스토리지에는 uid0부터 2의배수로 생성되기에 그에맞게 for문 선언.
+- i=0, idx보다 작거나 같고 반복할 떄마다 idx크기에 맞추기위해 2씩 증가함.<br>uid[i]값을 getItem을 사용해 array_data에 push해 삽입.
+- push된 데이터는 "\"\""와 같은 형식으로 저장되기에 inclues나find를<br>사용하려면 toString으로 문자열로 변환 후 split으로 "를 잘라주어야함.
+- if문으로 array_data.includes(uid)값이 true면 (이미 아이디가 존재하면)<br>alert로 경고문 출력후 생성되었던 해당 uid를 삭제한다.
+- 그렇지 않으면 생성후 가입완료 출력
+
+---
+
 ### [5월 11일]
 
 ```
