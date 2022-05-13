@@ -47,8 +47,13 @@
 
 ```
 ▶ 회원가입 기능 추가
-   ▶로컬스토리지 setItem,getItem
+   ▶로컬스토리지 setItem,removeItem / js의 includes활용
 ```
+
+- 로컬스토리지의 아이디 정보를 담은 배열을 find나 includes로 찾아서 참/거짓을 구분하는 것에서 오류가 발생함.
+- (해결) push로 배열에 삽입될 때 "\"\""와같은 형식으로 저장되었기 떄문에<br>toString과 split을 사용해 일반 문자열로 구분해주어 해결.
+
+- <a href="https://user-images.githubusercontent.com/80302108/168200858-679f8fa3-ab4f-4741-942b-b71c62492e6b.PNG">이미지링크</a>
 
 ```jsx
 //회원가입 form
@@ -128,7 +133,7 @@ function json1() {
 - buttin의 onclick이벤트로 json1이라는 함수가 실행되도록 함.(클릭시 실행되는 함수)
 - js의 경우 input태그의 입력값을 저장하는 uid와 upw, 로컬스토리지 크기를 담고있는 idx변수를 선언.
 - array_data라는 로컬스토리지의 회원 정보를 담을 빈 배열을 선언.
-- 계정생성시 로컬스토리지에는 uid0부터 2의배수로 생성되기에 그에맞게 for문 선언.
+- 계정생성시 로컬스토리지에는 uid0부터 2의배수로 생성되기에 그에맞게 for문 선언.(uid,upw가 두개씩 생성되어 idx크기가 2씩 증가하기 때문이다.)
 - i=0, idx보다 작거나 같고 반복할 떄마다 idx크기에 맞추기위해 2씩 증가함.<br>uid[i]값을 getItem을 사용해 array_data에 push해 삽입.
 - push된 데이터는 "\"\""와 같은 형식으로 저장되기에 inclues나find를<br>사용하려면 toString으로 문자열로 변환 후 split으로 "를 잘라주어야함.
 - if문으로 array_data.includes(uid)값이 true면 (이미 아이디가 존재하면)<br>alert로 경고문 출력후 생성되었던 해당 uid를 삭제한다.
