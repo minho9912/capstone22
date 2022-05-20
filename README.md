@@ -43,6 +43,109 @@
 
 ## [개발일지]
 
+### [5월 20일]
+
+```
+▶  로그아웃 기능2 추가!
+   ▶  로컬스토리지의 state변수 값을 활용하기로함.
+   ▶  index.html 즉 메인화면의 로그인 계정정보 부분을 추가함.
+```
+
+- <a href="https://user-images.githubusercontent.com/80302108/169577242-ebeb10e7-e4b8-4f0b-97f6-8b9ccdd88b28.PNG">계정,로그아웃이미지</a>
+
+```jsx
+//기존의 사이드바 부분
+window.onload = function login() {
+  if (localStorage.getItem('state') == 'true') {
+    bar.remove();
+    bar2.textContent = '로그아웃';
+    bar2.setAttribute('href', './index.html');
+    bar2.addEventListener('click', function () {
+      localStorage.setItem('state', 'false');
+      window.location.reload();
+    });
+    // 추가된 로그인 계정정보 부분
+    login_box.textContent = localStorage.getItem('login') + '님';
+    name_box.textContent = '로그아웃';
+    name_login_box.style.pointerEvents = 'none';
+    name_login_box2.addEventListener('click', function () {
+      alert('로그아웃합니다.');
+      name_login_box2.setAttribute('href', './index.html');
+      localStorage.setItem('state', 'false');
+      window.location.reload();
+    });
+  }
+};
+```
+
+- 로그인시 나만의 원두찾기 버튼 옆에 해당 로그인 계정 아이디와 로그아웃 버튼이 추가된다.
+- 계정정보가 담긴 버튼의 경우 클릭할 일이 없기에, style.pointerEvents를 none값을 지정해준다.
+- 로그아웃 버튼의 경우 addEventListener를 통하여 클릭시 alert창으로 로그아웃을 출력한다.
+- 로그아웃 출력 후 기존 로그아웃 코드와 똑같이 reload를 실행한다.
+
+---
+
+### [5월 19일]
+
+```
+▶  로그아웃 기능 추가!
+   ▶  로컬스토리지의 state변수 값을 활용하기로함.
+   ▶  버튼을 클릭하면 로컬스토리지 요소가 삭제되게 하였음.
+```
+
+- <a href="https://user-images.githubusercontent.com/80302108/169577389-f9cc87b3-420f-47bc-9e8f-2ea4d5abf0ac.PNG">로그아웃[사이드바]</a>
+
+```jsx
+//모든 html파일에 적용
+window.onload = function login() {
+  if (localStorage.getItem('state') == 'true') {
+    bar.remove();
+    bar2.textContent = '로그아웃';
+    bar2.setAttribute('href', './index.html');
+    bar2.addEventListener('click', function () {
+      localStorage.setItem('state', 'false');
+      window.location.reload();
+    });
+  }
+};
+```
+
+- html파일이(화면이) 로드되면 window.onload 속성이 실행됨과 동시에 login이라는 함수가 실행됨.
+- if문을 사용하여 만약 로컬스토리지의 state변수 값이 true라면(로그인이 되어있다는 뜻)
+- 사이드바의 로그인 버튼을 remove메소드로 삭제한뒤, 회원가입 버튼의 text내용을 '로그아웃'으로 교체한다.
+- 로그아웃으로 교체된 bar2버튼을 setAttribute속성으로 href값을 상대경로로 현재 html파일로 지정한다.
+- 로그아웃 버튼을 클릭시 addEventListener를 통해 로컬스토리지 state값을 false로 바꾸고 location.reload로 새로고침한다.
+- 새로고침이 될 경우 state값이 false이기에 로그인,회원가입버튼이 그대로있다.
+
+---
+
+### [5월 18일]
+
+```
+▶  블렌딩 시스템 수정 회의
+   ▶  재선택 버튼 위치를 조합하기와 일렬로 배치하기로함.
+   ▶  추후 원두 선택부분을 폴더형식에 카드처럼 담긴 모습으로 교체할 예정.
+```
+
+```css
+.reset_btn {
+  position: absolute;
+  bottom: 10px;
+  width: 280px;
+  height: 50px;
+  background-color: #7974d6;
+  left: 20.4%;
+  border-radius: 30px;
+  box-shadow: 1px 1px 3px #000;
+  cursor: pointer;
+}
+```
+
+- 기존에는 재선택 버튼이 블렌딩 부분 상단, 조합하기 버튼이 하단에 위치해있었음.
+- 통일감을 주기위해 하단 가운데에 일렬로 배치하기로함.
+
+---
+
 ### [5월 13일]
 
 ```
