@@ -43,6 +43,145 @@
 
 ## [개발일지]
 
+### [5월 25일]
+
+```
+▶  포스터 디자인 회의 진행
+  ▶  대표적인 상세페이지 4개를 선정 후 포스터에 넣기로함
+▶  메인페이지 반응형 작업 진행
+  ▶  미디어 쿼리를 활용해 특정 px값 이하로 줄어들면 요소가 사라지게함.
+
+
+```
+
+```css
+/* eq-box */
+@media screen and (max-width: 940px) {
+  .equipments > #eq-box:nth-child(1) > img {
+    width: 200px;
+    height: 250px;
+  }
+  .equipments > #eq-box:nth-child(1) > .eq-hover {
+    width: 200px;
+  }
+}
+@media screen and (max-width: 715px) {
+  .equipments > #eq-box:nth-child(2) > img {
+    width: 200px;
+    height: 250px;
+  }
+  .equipments > #eq-box:nth-child(2) > .eq-hover {
+    width: 200px;
+  }
+}
+@media screen and (max-width: 645px) {
+  .equipments > #eq-box:nth-child(3) > img {
+    width: 200px;
+    height: 250px;
+  }
+  .equipments > #eq-box:nth-child(3) > .eq-hover {
+    width: 200px;
+  }
+}
+/* info-box */
+@media screen and (max-width: 1127px) {
+  .beans-sk > .info-box-1 {
+    display: none;
+  }
+}
+@media screen and (max-width: 904px) {
+  .beans-sk > .info-box-2 {
+    display: none;
+  }
+}
+@media screen and (max-width: 672px) {
+  .beans-sk > .info-box-3 {
+    display: none;
+  }
+}
+@media screen and (max-width: 445px) {
+  .beans-sk > .info-box-4 {
+    display: none;
+  }
+  .line2 {
+    display: none;
+  }
+  .main-info,
+  .contry {
+    width: auto;
+  }
+}
+/* footer */
+@media screen and (max-width: 580px) {
+  .beans-sk > .info-box-4 {
+    margin-left: 135px;
+  }
+  .main-info {
+    margin-left: 30px;
+  }
+  footer > .inner {
+    width: auto;
+  }
+}
+@media screen and (max-width: 1000px) {
+  header > .inner {
+    width: auto;
+  }
+}
+/* info-box-beans */
+@media screen and (max-width: 1099px) {
+  .info-box > .info-box-two > .inner > .info-box-beans,
+  .info-box > .info-box-two > .inner > .info-box-beans > img,
+  a {
+    width: 200px !important;
+    font-size: 14px !important;
+  }
+  .info-box > .info-box-two > .inner > .info-box-beans {
+    right: 15%;
+  }
+}
+@media screen and (max-width: 950px) {
+  .info-box > .info-box-two > .inner > span > .coffee-pre {
+    display: none;
+  }
+  .info-box > .info-box-two > .inner > .info-box-beans {
+    right: 30%;
+  }
+}
+@media screen and (max-width: 785px) {
+  .info-box > .info-box-two > .inner > .info-box-beans {
+    right: 35%;
+  }
+  .info-box > .info-box-two > .inner > span > .about-pre {
+    display: none;
+  }
+}
+@media screen and (max-width: 731px) {
+  .info-box > .info-box-two > .inner > .info-box-beans {
+    display: none;
+  }
+}
+@media screen and (max-width: 617px) {
+  footer .menu > li {
+    width: 120px !important;
+  }
+  .info-box > .info-box-two > .inner > a {
+    margin-left: 20px !important;
+  }
+  .info-box > .info-box-two > .inner > p:nth-of-type(1) {
+    margin-top: 100px !important;
+  }
+  .info-box > .info-box-two > .inner > span > .all-pre {
+    display: none;
+  }
+  .info-box > .info-box-two > .inner > .info-box-beans {
+    display: none;
+  }
+}
+```
+
+---
+
 ### [5월 20일]
 
 ```
